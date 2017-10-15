@@ -4,7 +4,7 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development';
 }
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 
 const loadersConfig = require('./loaders-webpack.config.js');
 const pluginsConfig = require('./plugins-webpack.config.js');
