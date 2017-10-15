@@ -10,7 +10,9 @@
   },
   "scripts": {
     "build": "webpack --config config/webpack.config.js",
-    "start": "webpack-dev-server --config config/webpack.config.js"
+    "build:prod": "NODE_ENV=production webpack --config config/webpack.config.js",
+    "start": "webpack-dev-server --config config/webpack.config.js",
+    "start:prod": "NODE_ENV=production webpack-dev-server --config config/webpack.config.js"
   },
   "dependencies": {
     "proptypes": "^1.1.0",
