@@ -7,6 +7,16 @@ const baseLoaders = [{
   exclude: '/node_modules/',
   loader: 'babel-loader',
   options: babelConfig,
+}, {
+  enforce: 'pre',
+  test: /\.jsx?$/,
+  exclude: '/node_modules/',
+  loader: 'eslint-loader',
+  options: {
+    cache: true,
+    emitError: true,
+    emitWarning: true,
+  },
 }];
 
 const devLoaders = [{
