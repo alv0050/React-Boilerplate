@@ -8,6 +8,13 @@ const baseLoaders = [{
   loader: 'babel-loader',
   options: babelConfig,
 }, {
+  test: /\.jsx?$/,
+  exclude: '/node_modules/',
+  loader: 'stylelint-custom-processor-loader',
+  options: {
+    configPath: './src/.stylelintrc.json',
+  },
+}, {
   enforce: 'pre',
   test: /\.jsx?$/,
   exclude: '/node_modules/',
