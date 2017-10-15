@@ -9,9 +9,31 @@ const baseLoaders = [{
   options: babelConfig,
 }];
 
-const devLoaders = [];
+const devLoaders = [{
+  test: /\.(ico|svg|png|jpg|gif)$/,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]',
+        useRelativePath: true,
+        emitFile: false,
+      },
+    },
+  ],
+}];
 
-const prodLoaders = [];
+const prodLoaders = [{
+  test: /\.(ico|svg|png|jpg|gif)$/,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: 'assets/images/[name].[hash].[ext]',
+      },
+    },
+  ],
+}];
 
 const loaders = NODE_ENV === 'production' ? baseLoaders.concat(prodLoaders) : baseLoaders.concat(devLoaders);
 module.exports = loaders;
