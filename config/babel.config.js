@@ -7,9 +7,27 @@ const baseConfig = {
   ],
 };
 
-const devConfig = {};
+const devConfig = {
+  plugins: [
+    ['babel-plugin-styled-components', {
+      ssr: false,
+      displayName: true,
+      minify: false,
+      transpileTemplateLiterals: true,
+    }],
+  ],
+};
 
-const prodConfig = {};
+const prodConfig = {
+  plugins: [
+    ['babel-plugin-styled-components', {
+      ssr: false,
+      displayName: false,
+      minify: true,
+      transpileTemplateLiterals: true,
+    }],
+  ],
+};
 
 const config = Object.assign(
   {},
