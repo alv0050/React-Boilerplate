@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
 const { NODE_ENV } = process.env;
 
@@ -28,6 +29,49 @@ const basePlugins = [
 const devPlugins = [];
 
 const prodPlugins = [
+  new HtmlWebpackExternalsPlugin({
+    externals: [{
+      module: 'react',
+      global: 'React',
+      entry: {
+        path: 'https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.production.min.js',
+        attributes: {
+          integrity: 'sha256-3lmw1FBKoDUME3df7Jt4hZ8+2oPeoh1g3e2Yu3hm1Uo=',
+          crossorigin: 'anonymous',
+        },
+      },
+    }, {
+      module: 'react-dom',
+      global: 'ReactDOM',
+      entry: {
+        path: 'https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.production.min.js',
+        attributes: {
+          integrity: 'sha256-DcuTpceFnh+pCf/iObWR7DKb/qgb9eBZ7LG29+HKcFg=',
+          crossorigin: 'anonymous',
+        },
+      },
+    }, {
+      module: 'prop-types',
+      global: 'PropTypes',
+      entry: {
+        path: 'https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js',
+        attributes: {
+          integrity: 'sha256-hMV/CxbecNC5yXFYw1PxgYj0AximiDUyWJbacFBm9vE=',
+          crossorigin: 'anonymous',
+        },
+      },
+    }, {
+      module: 'styled-components',
+      global: 'styled',
+      entry: {
+        path: 'https://cdnjs.cloudflare.com/ajax/libs/styled-components/2.2.1/styled-components.min.js',
+        attributes: {
+          integrity: 'sha256-Le6hEFyQhfQ2wIcNjuoByKJ+5wwlWoSCkY0PYWoHCzM=',
+          crossorigin: 'anonymous',
+        },
+      },
+    }],
+  }),
   new UglifyJSPlugin({
     sourceMap: true,
   }),
