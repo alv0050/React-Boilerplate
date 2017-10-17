@@ -1,15 +1,19 @@
+const path = require('path');
+
 const { NODE_ENV } = process.env;
 
 const babelConfig = require('./babel.config.js');
 
+const srcPath = path.join(__dirname, '..', 'src');
+
 const baseLoaders = [{
   test: /\.jsx?$/,
-  exclude: '/node_modules/',
+  include: srcPath,
   loader: 'babel-loader',
   options: babelConfig,
 }, {
   test: /\.jsx?$/,
-  exclude: '/node_modules/',
+  include: srcPath,
   loader: 'stylelint-custom-processor-loader',
   options: {
     configPath: './src/.stylelintrc.json',
@@ -17,7 +21,7 @@ const baseLoaders = [{
 }, {
   enforce: 'pre',
   test: /\.jsx?$/,
-  exclude: '/node_modules/',
+  include: srcPath,
   loader: 'eslint-loader',
   options: {
     cache: true,
