@@ -9,7 +9,10 @@
     "node": ">=6.0.0"
   },
   "lint-staged": {
-    "*.{js, jsx}": ["eslint", "git add"]
+    "*.{js, jsx}": [
+      "eslint",
+      "git add"
+    ]
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -19,7 +22,7 @@
     "start:prod": "NODE_ENV=production webpack-dev-server --config config/webpack.config.js"
   },
   "dependencies": {
-    "proptypes": "^1.1.0",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "styled-components": "^2.2.1"
