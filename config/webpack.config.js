@@ -1,3 +1,4 @@
+const merge = require('webpack-merge');
 const path = require('path');
 
 if (!process.env.NODE_ENV) {
@@ -44,8 +45,7 @@ const prodConfig = {
   },
 };
 
-const config = Object.assign(
-  {},
+const config = merge(
   baseConfig,
   (NODE_ENV === 'production' ? prodConfig : devConfig)
 );

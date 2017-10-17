@@ -1,3 +1,5 @@
+const merge = require('webpack-merge');
+
 const { NODE_ENV } = process.env;
 
 const baseConfig = {
@@ -29,8 +31,7 @@ const prodConfig = {
   ],
 };
 
-const config = Object.assign(
-  {},
+const config = merge(
   baseConfig,
   NODE_ENV === 'production' ? prodConfig : devConfig
 );
