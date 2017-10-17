@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
@@ -18,6 +19,18 @@ const basePlugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(NODE_ENV),
     },
+  }),
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'server',
+    analyzerHost: '127.0.0.1',
+    analyzerPort: 8888,
+    reportFilename: 'report.html',
+    defaultSizes: 'parsed',
+    openAnalyzer: true,
+    generateStatsFile: true,
+    statsFilename: 'stats.json',
+    statsOptions: null,
+    logLevel: 'info',
   }),
   new HTMLWebpackPlugin({
     template: path.join(srcPath, 'index.html'),
