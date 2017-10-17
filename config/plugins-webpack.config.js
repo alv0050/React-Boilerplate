@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -87,6 +88,13 @@ const prodPlugins = [
   }),
   new UglifyJSPlugin({
     sourceMap: true,
+  }),
+  new CompressionPlugin({
+    test: /\.js$|\.css$|\.html$/,
+    asset: '[path].gz[query]',
+    algorithm: 'gzip',
+    threshold: 0,
+    minRatio: 0.8,
   }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.CommonsChunkPlugin({
