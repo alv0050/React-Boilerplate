@@ -33,6 +33,7 @@ const devConfig = {
   devtool: 'inline-source-map',
   devServer: {
     port: 8080,
+    hot: true,
   },
 };
 

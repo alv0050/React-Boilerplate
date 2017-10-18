@@ -40,7 +40,10 @@ const basePlugins = [
   }),
 ];
 
-const devPlugins = [];
+const devPlugins = [
+  new webpack.NamedModulesPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
+];
 
 const prodPlugins = [
   new HtmlWebpackExternalsPlugin({
