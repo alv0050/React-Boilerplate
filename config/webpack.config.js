@@ -17,7 +17,7 @@ const baseConfig = {
   context: srcPath,
   entry: './index.jsx',
   output: {
-    filename: './assets/js/[name].[chunkhash].js',
+    filename: './assets/js/[name].[hash].js',
     path: buildPath,
   },
   module: {
