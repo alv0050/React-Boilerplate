@@ -9,8 +9,7 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
 const { NODE_ENV } = process.env;
 
-const rootApp = path.join(__dirname, '../');
-const srcPath = path.join(__dirname, '../src');
+const { rootApp, srcPath } = require('./paths');
 
 const basePlugins = [
   new CleanWebpackPlugin(['dist'], {

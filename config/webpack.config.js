@@ -1,5 +1,4 @@
 const merge = require('webpack-merge');
-const path = require('path');
 
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development';
@@ -7,11 +6,9 @@ if (!process.env.NODE_ENV) {
 
 const { NODE_ENV } = process.env;
 
+const { srcPath, buildPath } = require('./paths');
 const loadersConfig = require('./loaders-webpack.config.js');
 const pluginsConfig = require('./plugins-webpack.config.js');
-
-const srcPath = path.join(__dirname, '..', 'src');
-const buildPath = path.join(__dirname, '..', 'dist');
 
 const baseConfig = {
   context: srcPath,

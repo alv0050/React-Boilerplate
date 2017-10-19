@@ -1,10 +1,8 @@
-const path = require('path');
-
 const { NODE_ENV } = process.env;
 
 const babelConfig = require('./babel.config.js');
 
-const srcPath = path.join(__dirname, '..', 'src');
+const { srcPath } = require('./paths');
 
 const baseLoaders = [{
   test: /\.jsx?$/,
