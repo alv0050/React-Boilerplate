@@ -1,9 +1,19 @@
+/**
+ * Environment Vars
+ */
 const { NODE_ENV } = process.env;
 
+/**
+ * Directory Paths
+ */
 const babelConfig = require('./babel.config.js');
 
 const { srcPath } = require('./paths');
 
+/**
+ * Webpack config shared by dev and prod
+ * @type {Object}
+ */
 const baseLoaders = [{
   test: /\.jsx?$/,
   include: srcPath,
@@ -28,6 +38,10 @@ const baseLoaders = [{
   },
 }];
 
+/**
+ * Development-only webpack loaders configuration
+ * @type {Object}
+ */
 const devLoaders = [{
   test: /\.(ico|svg|png|jpg|gif)$/,
   use: [
@@ -42,6 +56,10 @@ const devLoaders = [{
   ],
 }];
 
+/**
+ * Production-only webpack loaders configuration
+ * @type {Object}
+ */
 const prodLoaders = [{
   test: /\.(ico|svg|png|jpg|gif)$/,
   use: [
@@ -54,5 +72,9 @@ const prodLoaders = [{
   ],
 }];
 
+/**
+ * Actual webpack loader config object
+ * @type {Object}
+ */
 const loaders = NODE_ENV === 'production' ? baseLoaders.concat(prodLoaders) : baseLoaders.concat(devLoaders);
 module.exports = loaders;

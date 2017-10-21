@@ -1,15 +1,26 @@
 const merge = require('webpack-merge');
 
+// First thing first, check the NODE_ENV. If undefined, set to development
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development';
 }
 
+/**
+ * Environment Vars
+ */
 const { NODE_ENV } = process.env;
 
+/**
+ * Directory Paths
+ */
 const { srcPath, buildPath } = require('./paths');
 const loadersConfig = require('./loaders-webpack.config.js');
 const pluginsConfig = require('./plugins-webpack.config.js');
 
+/**
+ * Webpack config shared by dev and prod
+ * @type {Object}
+ */
 const baseConfig = {
   context: srcPath,
   entry: './index.jsx',
@@ -26,6 +37,10 @@ const baseConfig = {
   plugins: pluginsConfig,
 };
 
+/**
+ * Development-specific webpack configuration
+ * @type {Object}
+ */
 const devConfig = {
   devtool: 'inline-source-map',
   devServer: {
@@ -34,6 +49,10 @@ const devConfig = {
   },
 };
 
+/**
+ * Production-specific webpack configuration
+ * @type {Object}
+ */
 const prodConfig = {
   devtool: 'nosources-source-map',
   devServer: {
@@ -43,6 +62,10 @@ const prodConfig = {
   },
 };
 
+/**
+ * Actual webpack config object
+ * @type {Object}
+ */
 const config = merge(
   baseConfig,
   (NODE_ENV === 'production' ? prodConfig : devConfig)

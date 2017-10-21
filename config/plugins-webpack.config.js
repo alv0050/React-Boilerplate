@@ -7,10 +7,20 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
+/**
+ * Environment Vars
+ */
 const { NODE_ENV } = process.env;
 
+/**
+ * Directory Paths
+ */
 const { rootApp, srcPath } = require('./paths');
 
+/**
+ * Webpack plugin config shared by dev and prod
+ * @type {Array}
+ */
 const basePlugins = [
   new CleanWebpackPlugin(['dist'], {
     root: rootApp,
@@ -39,11 +49,19 @@ const basePlugins = [
   }),
 ];
 
+/**
+ * Development-only webpack plugins configuration
+ * @type {Array}
+ */
 const devPlugins = [
   new webpack.NamedModulesPlugin(),
   new webpack.HotModuleReplacementPlugin(),
 ];
 
+/**
+ * Production-only webpack plugins configuration
+ * @type {Array}
+ */
 const prodPlugins = [
   new HtmlWebpackExternalsPlugin({
     externals: [{
@@ -108,5 +126,9 @@ const prodPlugins = [
   }),
 ];
 
+/**
+ * Actual webpack plugin config object
+ * @type {Array}
+ */
 const plugins = basePlugins.concat(NODE_ENV === 'production' ? prodPlugins : devPlugins);
 module.exports = plugins;
