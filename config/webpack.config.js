@@ -13,7 +13,7 @@ const { NODE_ENV } = process.env;
 /**
  * Directory Paths
  */
-const { srcPath, buildPath } = require('./paths');
+const { srcPath, buildPath, publicPath } = require('./paths');
 const loadersConfig = require('./loaders-webpack.config.js');
 const pluginsConfig = require('./plugins-webpack.config.js');
 
@@ -23,10 +23,15 @@ const pluginsConfig = require('./plugins-webpack.config.js');
  */
 const baseConfig = {
   context: srcPath,
-  entry: './index.jsx',
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    './index.jsx',
+  ],
   output: {
     filename: './assets/js/[name].[hash].js',
     path: buildPath,
+    publicPath,
   },
   module: {
     rules: loadersConfig,
