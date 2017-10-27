@@ -46,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-react": "^7.4.0",
+    "eslint_d": "^5.1.0",
     "file-loader": "^1.1.5",
     "html-webpack-externals-plugin": "^3.6.0",
     "html-webpack-plugin": "^2.30.1",
