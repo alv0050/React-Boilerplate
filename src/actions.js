@@ -1,1 +1,6 @@
-export default Object.assign({});
+import * as counterActions from './containers/Counter/actions';
+
+export default Object.assign(
+  {},
+  counterActions,
+);

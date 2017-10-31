@@ -1,8 +1,10 @@
 import React from 'react';
 
+import Counter from './containers/Counter';
+
 function App() {
   return (
-    <h1>Hello World</h1>
+    <Counter />
   );
 }
 
