@@ -12,10 +12,15 @@
     "*.{js,jsx}": [
       "eslint_d",
       "git add"
+    ],
+    "*.test.{js,jsx}": [
+      "jest -o --config config/jest/jest.config.js --bail --findRelatedTests",
+      "git add"
     ]
   },
   "scripts": {
     "precommit": "lint-staged",
+    "test": "jest -o --config config/jest/jest.config.js",
     "build": "webpack --config config/webpack.config.js",
     "build:prod": "NODE_ENV=production webpack --config config/webpack.config.js",
     "start": "webpack-dev-server --config config/webpack.config.js",
