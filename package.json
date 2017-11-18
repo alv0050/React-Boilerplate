@@ -1,8 +1,8 @@
 {
-  "name": "react-app",
+  "name": "react-boilerplate",
   "version": "0.1.0",
   "description": "Create react app",
-  "repository": "git@bitbucket.org:alv0050/react-app.git",
+  "repository": "git@bitbucket.org:alv0050/react-boilerplate.git",
   "author": "alv0500 <alv_0500@yahoo.com>",
   "license": "MIT",
   "engines": {
