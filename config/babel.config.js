@@ -11,8 +11,14 @@ const { NODE_ENV } = process.env;
  */
 const baseConfig = {
   presets: [
-    'env',
+    [
+      'env',
+      { modules: false },
+    ],
     'react',
+  ],
+  plugins: [
+    'react-hot-loader/babel',
   ],
 };
 

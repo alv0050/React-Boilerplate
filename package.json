@@ -1,8 +1,8 @@
 {
-  "name": "react-app",
-  "version": "0.1.0",
+  "name": "react-boilerplate",
+  "version": "0.2.0",
   "description": "Create react app",
-  "repository": "git@bitbucket.org:alv0050/react-app.git",
+  "repository": "git@bitbucket.org:alv0050/react-boilerplate.git",
   "author": "alv0500 <alv_0500@yahoo.com>",
   "license": "MIT",
   "engines": {
@@ -10,21 +10,35 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint",
+      "eslint_d",
+      "git add"
+    ],
+    "*.test.{js,jsx}": [
+      "jest -o --config config/jest/jest.config.js --bail --findRelatedTests",
       "git add"
     ]
   },
   "scripts": {
     "precommit": "lint-staged",
+    "test": "jest -o --config config/jest/jest.config.js",
     "build": "webpack --config config/webpack.config.js",
     "build:prod": "NODE_ENV=production webpack --config config/webpack.config.js",
     "start": "webpack-dev-server --config config/webpack.config.js",
     "start:prod": "NODE_ENV=production webpack-dev-server --config config/webpack.config.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "history": "^4.7.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-hot-loader": "^3.1.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.8",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-saga": "^0.16.0",
     "styled-components": "^2.2.1"
   },
   "devDependencies": {
@@ -36,6 +50,8 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "compression-webpack-plugin": "^1.0.1",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.0.0",
     "eslint-loader": "^1.9.0",
@@ -44,11 +60,15 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-react": "^7.4.0",
+    "eslint_d": "^5.1.0",
     "file-loader": "^1.1.5",
     "html-webpack-externals-plugin": "^3.6.0",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "jest-styled-components": "^4.9.0",
     "lint-staged": "^4.2.3",
+    "react-test-renderer": "^16.0.0",
     "stylelint": "^8.2.0",
     "stylelint-config-standard": "^17.0.0",
     "stylelint-config-styled-components": "^0.1.1",

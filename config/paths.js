@@ -8,6 +8,7 @@ const paths = {
   srcPath: resolvePaths('src'),
   buildPath: resolvePaths('dist'),
   libPaths: resolvePaths('node_modules'),
+  publicPath: '/',
 };
 
 module.exports = paths;
